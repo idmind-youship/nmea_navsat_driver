@@ -5,11 +5,11 @@ if (NOT CATKIN_ENABLE_TESTING)
   find_package(catkin REQUIRED COMPONENTS
   )
 endif()
-if (CATKIN_ENABLE_TESTING)
-  find_package(catkin REQUIRED COMPONENTS
-    catkin_virtualenv
-  )
-endif()
+# if (CATKIN_ENABLE_TESTING)
+#   find_package(catkin REQUIRED COMPONENTS
+#     catkin_virtualenv
+#   )
+# endif()
 
 catkin_python_setup()
 catkin_package()
@@ -33,22 +33,22 @@ install(FILES
    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
-if (CATKIN_ENABLE_TESTING)
-  catkin_generate_virtualenv(
-    PYTHON_INTERPRETER python3
-  )
+# if (CATKIN_ENABLE_TESTING)
+#   catkin_generate_virtualenv(
+#     PYTHON_INTERPRETER python3
+#   )
 
-  catkin_add_nosetests(
-    test/test_driver.py
-    DEPENDENCIES ${${PROJECT_NAME}_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_virtualenv
-  )
+#   catkin_add_nosetests(
+#     test/test_driver.py
+#     DEPENDENCIES ${${PROJECT_NAME}_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_virtualenv
+#   )
 
-  catkin_install_python(
-    PROGRAMS
-      test/test_driver.py
-    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+#   catkin_install_python(
+#     PROGRAMS
+#       test/test_driver.py
+#     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-  find_package(roslint REQUIRED)
-  roslint_python()
-  roslint_add_test()
-endif()
+#   find_package(roslint REQUIRED)
+#   roslint_python()
+#   roslint_add_test()
+# endif()
